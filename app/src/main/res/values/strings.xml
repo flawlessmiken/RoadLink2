@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RoadLink2</string>
+
+
+    <string-array name="has_return">
+        <item>Has Return</item>
+        <item>YES</item>
+        <item>NO</item>
+
+    </string-array>
+
+    <string name="has_return_prompt">Has Return</string>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfirmActivity">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Confirm Booking"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_customer_id"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Customer ID" />
+
+
+            <TextView
+                android:id="@+id/customerID"
+                style="@style/CustomEditText"
+                android:text="john234" />
+
+            <TextView
+                android:id="@+id/tv_trip_distance"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Trip Distance" />
+
+            <TextView
+                android:id="@+id/tripDistance"
+                style="@style/CustomEditText"
+                android:text="40 km" />
+
+            <TextView
+                android:id="@+id/tv_calc"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Trip Distance" />
+
+            <TextView
+                android:id="@+id/calculatedCost"
+                style="@style/CustomEditText"
+                android:text="#400.00" />
+
+            <TextView
+                android:id="@+id/tv_departure_time"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Departure Time" />
+
+            <TextView
+                android:id="@+id/departureTime"
+                style="@style/CustomEditText"
+                android:text="5:00 Pm" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Location" />
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/CustomEditText"
+                android:text="Enugu North" />
+
+            <TextView
+                android:id="@+id/tv_destination"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Destination" />
+
+            <TextView
+                android:id="@+id/destination"
+                style="@style/CustomEditText"
+                android:text="Enugu South" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                style="@style/CustomTextView"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="Address" />
+
+            <TextView
+                android:id="@+id/address"
+                style="@style/CustomEditText"
+                android:text="50. Artisan Asata" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/confirm"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.4"
+                    android:onClick="confirmBookingClicked"
+                    android:padding="5dp"
+                    android:text="Confirm"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancel"
+                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.6"
+                    android:onClick="cancelBookingClicked"
+
+                    android:padding="5dp"
+                    android:text="Cancel"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Button" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

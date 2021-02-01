@@ -1,0 +1,53 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="CustomEditText" parent="@style/TextAppearance.AppCompat">
+        <item name= "android:layout_width">match_parent</item>
+        <item name= "android:layout_height">wrap_content</item>
+        <item name= "android:layout_marginStart">8dp</item>
+        <item name= "android:layout_marginEnd">8dp</item>
+        <item name= "android:layout_marginTop">4dp</item>
+        <item name= "android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name= "android:background">@drawable/edittext_modify</item>
+    </style>
+
+
+    <style name="CustomEditText2" parent="@style/TextAppearance.AppCompat">
+        <item name= "android:layout_width">match_parent</item>
+        <item name= "android:layout_height">wrap_content</item>
+        <item name= "android:layout_marginStart">8dp</item>
+        <item name= "android:layout_marginEnd">8dp</item>
+        <item name= "android:layout_marginTop">4dp</item>
+        <item name= "android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name= "android:background">@drawable/roundable_selected</item>
+    </style>
+
+    <style name="CustomTextView" parent="@style/TextAppearance.AppCompat">
+        <item name= "android:layout_width">match_parent</item>
+        <item name= "android:layout_height">wrap_content</item>
+        <item name= "android:layout_marginStart">8dp</item>
+        <item name= "android:layout_marginEnd">8dp</item>
+        <item name= "android:layout_marginTop">2dp</item>
+    </style>
+
+
+    <style name="CustomEditText3" parent="@style/TextAppearance.AppCompat">
+        <item name= "android:layout_width">match_parent</item>
+        <item name= "android:layout_height">wrap_content</item>
+        <item name= "android:layout_marginStart">8dp</item>
+        <item name= "android:layout_marginEnd">8dp</item>
+        <item name= "android:layout_marginTop">4dp</item>
+        <item name= "android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+        <item name= "android:background">@drawable/gray_roundable</item>
+    </style>
+
+
+
+</resources>
