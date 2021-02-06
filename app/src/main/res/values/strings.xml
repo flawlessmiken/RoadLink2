@@ -3,11 +3,133 @@
 
 
     <string-array name="has_return">
-        <item>Has Return</item>
-        <item>YES</item>
-        <item>NO</item>
+        <item>False</item>
+        <item>True</item>
 
     </string-array>
 
     <string name="has_return_prompt">Has Return</string>
+
+<string-array name="destination">
+    <item>Aninri</item>
+    <item>Awgu</item>
+    <item>Enugu-East</item>
+    <item>Enugu-North</item>
+    <item>Enugu-South</item>
+    <item>Ezeagu</item>
+    <item>Igbo-Etiti</item>
+    <item>Igbo-EzeNorth</item>
+    <item>Igbo-EzeSouth</item>
+    <item>Isi-Uzo</item>
+    <item>Nkanu-East</item>
+    <item>Nkanu-West</item>
+    <item>Nsukka</item>
+    <item>Oji-River</item>
+    <item>Udenu</item>
+    <item>Udi</item>
+    <item>Uzo-Uwani</item>
+    <item>Aguata</item>
+    <item>Anambra-East</item>
+    <item>Anambra-west</item>
+    <item>Anaocha</item>
+    <item>Awka-North</item>
+    <item>Awka-South</item>
+    <item>Anyamelum</item>
+    <item>Dunukofia</item>
+    <item>Ekwusigo</item>
+    <item>Idemili-North</item>
+    <item>Idemili-South</item>
+    <item>Ihialla</item>
+    <item>Njikoka              </item>
+    <item>Nnewi-North</item>
+    <item>Ogbaru</item>
+    <item>Onitsha-North</item>
+    <item>Nnewi-South</item>
+    <item>Onitsha-South</item>
+    <item>Orumba-North</item>
+    <item>Orumba-South</item>
+    <item>Oyi</item>
+    <item>Aba-North</item>
+    <item>Aba-South</item>
+    <item>Arochukwu</item>
+    <item>Bende</item>
+    <item>Ikwuano</item>
+    <item>IsialaNgwa-North</item>
+    <item>IsialaNgwa-South</item>
+    <item>Isiukwuato</item>
+    <item>Obingwa</item>
+    <item>Ohafia</item>
+    <item>Osisioma-Ngwa</item>
+    <item>Ugwunagbo</item>
+    <item>Ukwa-East</item>
+    <item>Ukwa-West</item>
+    <item>Umuahia-North</item>
+    <item>Umuahia-South</item>
+    <item>Umunneochi</item>
+    <item>Aboh-Mbaise</item>
+    <item>Ahiazu-Mbaise</item>
+    <item>Ehime-Mbano</item>
+    <item>Ezinihitte-Mbaise</item>
+    <item>Okigwe</item>
+    <item>Onuimo</item>
+    <item>Ideato-North</item>
+    <item>Ideato-South</item>
+    <item>Ihitte-Uboma</item>
+    <item>Ikeduru</item>
+    <item>Isiala-Mbano</item>
+    <item>Isu</item>
+    <item>Nwangele</item>
+    <item>Mbaitolu</item>
+    <item>Ngor-Okpala</item>
+    <item>Njaba</item>
+    <item>Nkwere</item>
+    <item>Orlu</item>
+    <item>Obowo</item>
+    <item>Oguta</item>
+    <item>Ohaji-Egbema</item>
+    <item>Owerri-West</item>
+    <item>Orsu</item>
+    <item>Oru-East</item>
+    <item>Oru-West</item>
+    <item>Owerri-Municipal</item>
+    <item>Owerri-North</item>
+    <item>Abakaliki</item>
+    <item>Afikpo-North</item>
+    <item>Afikpo-South</item>
+    <item>Ebonyi</item>
+    <item>Ezza-North</item>
+    <item>Ezza-South</item>
+    <item>Ikwo</item>
+    <item>Ishielu</item>
+    <item>Ivo-Ebonyi</item>
+    <item>Izzi</item>
+    <item>Ohaozara</item>
+    <item>Ohaukwu</item>
+    <item>Onicha</item>
+    <item>Port-Hacourt</item>
+</string-array>
+
+
+
+    <string-array name="Location">
+    <item>Aninri            </item>
+    <item>Awgu</item>
+    <item>Enugu-East</item>
+    <item>Enugu-North</item>
+    <item>Enugu-South</item>
+    <item>Ezeagu</item>
+    <item>Igbo-Etiti</item>
+    <item>Igbo-EzeNorth</item>
+    <item>Igbo-EzeSouth</item>
+    <item>Isi-Uzo</item>
+    <item>Nkanu-East</item>
+    <item>Nkanu-West</item>
+    <item>Nsukka</item>
+    <item>Oji-River</item>
+    <item>Udenu</item>
+    <item>Udi</item>
+    <item>Uzo-Uwani</item>
+    </string-array>
+
+    <string name="Destination_prompt">Destination</string>
 </resources>

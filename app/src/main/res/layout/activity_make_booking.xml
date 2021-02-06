@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MakeBookingActivity">
+
+
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -46,39 +49,60 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_booking"
+                android:id="@+id/tv_customer_id"
                 style="@style/CustomTextView"
-                android:text="Booking ID" />
-
-
-            <EditText
-                android:id="@+id/booking_id"
-                style="@style/CustomEditText"
-                android:hint="Booking ID"
-                android:inputType="numberDecimal" />
+                android:text="Customer ID" />
 
             <TextView
-                android:id="@+id/tv_vehicle"
-                style="@style/CustomTextView"
-                android:text="Vehicle ID" />
-
-            <EditText
-                android:id="@+id/vehicleID"
-                style="@style/CustomEditText2"
-                android:hint="Vehicle ID"
-                android:inputType="numberDecimal" />
+                android:id="@+id/customerID"
+                style="@style/CustomEditText"
+                android:hint="Customer ID"
+                 />
 
             <TextView
-                android:id="@+id/tv_trip_distance"
+                android:id="@+id/tv_locat"
                 style="@style/CustomTextView"
-                android:text="Trip Distance" />
+                android:text="Location" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edittext_modify">
+                <Spinner
+                    android:id="@+id/spinnerLoc"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:prompt="@string/has_return_prompt"
+                    />
+            </RelativeLayout>
 
 
-            <EditText
-                android:id="@+id/tripDistance"
-                style="@style/CustomEditText"
-                android:hint="Trip Distance"
-                android:inputType="numberDecimal" />
+            <TextView
+                android:id="@+id/tv_des"
+                style="@style/CustomTextView"
+                android:text="Destination" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edittext_modify">
+                <Spinner
+                    android:id="@+id/spinnerDes"
+                    style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:prompt="@string/has_return_prompt"
+                    />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_has_return"
@@ -88,10 +112,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/edittext_modify">
                 <Spinner
                     android:id="@+id/spinner"
@@ -99,123 +123,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:entries="@array/has_return"
-                    android:prompt="@string/has_return_prompt"
                     />
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_cost"
-                style="@style/CustomTextView"
-                android:text="Calculated Cost" />
-
-
-            <EditText
-                android:id="@+id/calculatedCost"
-                style="@style/CustomEditText"
-                android:hint="Calculated Cost"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/tv_booking_status"
-                style="@style/CustomTextView"
-                android:text="Booking Status" />
-
-            <EditText
-                android:id="@+id/bookingStatus"
-                style="@style/CustomEditText2"
-                android:hint="Booking Status"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/tv_payment_status"
-                style="@style/CustomTextView"
-                android:text="Payment Status" />
-
-
-            <EditText
-                android:id="@+id/paymentStatus"
-                style="@style/CustomEditText"
-                android:hint="Payment Status"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/tv_paid_amount"
-                style="@style/CustomTextView"
-                android:text="Paid Amount" />
-
-            <EditText
-                android:id="@+id/paidAmount"
-                style="@style/CustomEditText2"
-                android:hint="Paid Amount"
-                android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/tv_departure_time"
                 style="@style/CustomTextView"
-                android:text="Departure Time" />
+                android:text="Departure Time " />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/departureTime"
-                style="@style/CustomEditText"
-                android:hint="Departure Time"
-                android:inputType="numberDecimal" />
+                <EditText
+                    android:id="@+id/departureTime"
+                    style="@style/CustomEditText"
+                    android:layout_weight="1"
+                    android:hint="Time (e.g. 2:00) "
+                    android:inputType="time" />
+                <RadioGroup
+                    android:id="@+id/radioGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal"
+                    android:layout_centerInParent="true">
+                    <RadioButton
+                        android:id="@+id/radioTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="am"
+                        android:checked="true" />
+                    <RadioButton
+                        android:id="@+id/pm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pm"
+                        />
+                </RadioGroup>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_booking_date"
-                style="@style/CustomTextView"
-                android:text="Booking Date" />
-
-            <EditText
-                android:id="@+id/bookingDate"
-                style="@style/CustomEditText2"
-                android:hint="Booking Date"
-                android:inputType="date" />
-
-            <TextView
-                android:id="@+id/tv_arrival_time"
-                style="@style/CustomTextView"
-                android:text="Arrival Time" />
-
-            <EditText
-                android:id="@+id/arrivalTime"
-                style="@style/CustomEditText"
-                android:hint="Arrival Time"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/tv_customer_id"
-                style="@style/CustomTextView"
-                android:text="Customer ID" />
-
-            <EditText
-                android:id="@+id/customerID"
-                style="@style/CustomEditText2"
-                android:hint="Customer ID"
-                android:inputType="text" />
-
-            <TextView
-                android:id="@+id/tv_location"
-                style="@style/CustomTextView"
-                android:text="Location" />
-
-            <EditText
-                android:id="@+id/location"
-                style="@style/CustomEditText"
-                android:hint="Location"
-                android:inputType="text" />
-
-            <TextView
-                android:id="@+id/tv_destination"
-                style="@style/CustomTextView"
-                android:text="Destination" />
-
-            <EditText
-                android:id="@+id/destination"
-                style="@style/CustomEditText2"
-                android:hint="Destination"
-                android:inputType="text" />
 
             <TextView
                 android:id="@+id/tv_number_passenger"
@@ -226,7 +177,8 @@
                 android:id="@+id/numPassenger"
                 style="@style/CustomEditText"
                 android:hint="Number of Passenger"
-                android:inputType="text" />
+                android:maxLength="2"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/tv_locat_address"
@@ -266,6 +218,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <LinearLayout
+        android:id="@+id/layoutProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#B9FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"
+        android:gravity="center">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            />
+
+    </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.flawlessconcepts.roadlink.roadlinkNetwork
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class BookingItem(
     var arrivalTime: String = "",
     var bookingDate: String = "",
@@ -19,7 +19,7 @@ data class BookingItem(
     var paidAmount: Double=0.0,
     var paymentStatus: String="",
     var tripDistance: Double=0.0,
-    var isHasReturn: Boolean = false,
+    var isHasReturn: String? = "false",
     var vehicleID: String = ""
-)
+): Parcelable
 

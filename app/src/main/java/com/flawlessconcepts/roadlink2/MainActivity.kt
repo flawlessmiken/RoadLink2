@@ -69,8 +69,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_LONG).show()
                 try {
                     val customer = response.body() as CustomerItem
-                    Toast.makeText(applicationContext, customer.customerFirstName, Toast.LENGTH_LONG).show()
-
+                   // Toast.makeText(applicationContext, customer.customerFirstName, Toast.LENGTH_LONG).show()
                     ///Start Up MenuActivity while passing Customer object as Parameter
 
                     val startMenu = Intent(this@MainActivity, MenuActivity::class.java)

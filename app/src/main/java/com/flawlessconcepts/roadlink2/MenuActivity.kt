@@ -19,19 +19,22 @@ class MenuActivity : AppCompatActivity() {
 
 
         val viewBookingButton = findViewById<MaterialButton>(R.id.bt_view_booking)
-        viewBookingButton.setOnClickListener { viewBookingClicked() }
+        viewBookingButton.setOnClickListener {
+            if(customer != null)viewBookingClicked(customer) }
 
         val makebookingButton = findViewById<MaterialButton>(R.id.bt_make_booking)
-        makebookingButton.setOnClickListener { makeBookingClicked() }
+        makebookingButton.setOnClickListener { if(customer != null)makeBookingClicked(customer) }
     }
 
-    private fun viewBookingClicked() {
+    private fun viewBookingClicked(customer: CustomerItem) {
         val startViewBooking = Intent(this@MenuActivity, ViewBookingActivity::class.java)
+        startViewBooking.putExtra("CUSTOMER",customer)
         startActivity(startViewBooking)
     }
 
-    private fun makeBookingClicked() {
+    private fun makeBookingClicked(customer: CustomerItem) {
         val startMakeBooking = Intent(this@MenuActivity, MakeBookingActivity::class.java)
+        startMakeBooking.putExtra("CUSTOMER",customer)
         startActivity(startMakeBooking)
     }
 }
