@@ -39,6 +39,20 @@ interface RetrofitService {
         @Query("locationAddress") locationAddress: String?
     ): Call<BookingItem>
 
+    @GET("/webresources/rest/calculatePriceService")
+    fun calculateCostService(
+        @Query("location") location: String?,
+        @Query("destination") destination: String?,
+        @Query("hasReturn") hasReturn: String?,
+        @Query("departureTime") departureTime: String?,
+        @Query("locationAddress") locationAddress: String?,
+        @Query("customerPhone") customerPhone: String?,
+        @Query("numbOfPassengers") numberOfPassengers: String?
+
+    ): Call<BookingItem>
+
+
+
 //    interface TaskService {
 //        @POST("/tasks")
 //        fun createTask(@Body task: Task?): Call<Task?>?

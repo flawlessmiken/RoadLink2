@@ -1,9 +1,9 @@
 package com.flawlessconcepts.roadlink.roadlinkNetwork
 
 data class LocationMatrix(
-    val fromLocation: String,
-    val toLocation: String,
-    val distance:String,
-    val time:String
+    var fromLocation: String ="0.0",
+    var toLocation: String ="0.0" ,
+    var distance:String ="0.0",
+    var time:String="0.0"
 )
 

@@ -58,7 +58,7 @@
             <TextView
                 android:id="@+id/customerID"
                 style="@style/CustomEditText"
-                android:text="john234" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_trip_distance"
@@ -70,19 +70,19 @@
             <TextView
                 android:id="@+id/tripDistance"
                 style="@style/CustomEditText"
-                android:text="40 km" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_calc"
                 style="@style/CustomTextView"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:text="Trip Distance" />
+                android:text="Calculated Cost" />
 
             <TextView
                 android:id="@+id/calculatedCost"
                 style="@style/CustomEditText"
-                android:text="#400.00" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_departure_time"
@@ -94,7 +94,7 @@
             <TextView
                 android:id="@+id/departureTime"
                 style="@style/CustomEditText"
-                android:text="5:00 Pm" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_location"
@@ -106,7 +106,7 @@
             <TextView
                 android:id="@+id/location"
                 style="@style/CustomEditText"
-                android:text="Enugu North" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_destination"
@@ -124,13 +124,13 @@
                 android:id="@+id/tv_address"
                 style="@style/CustomTextView"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:text="Address" />
+                android:paddingBottom="3dp"
+                android:text="Location Address" />
 
             <TextView
                 android:id="@+id/address"
                 style="@style/CustomEditText"
-                android:text="50. Artisan Asata" />
+                android:text="" />
 
             <LinearLayout
                 android:layout_width="match_parent"

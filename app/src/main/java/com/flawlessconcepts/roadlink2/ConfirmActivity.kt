@@ -1,8 +1,10 @@
 package com.flawlessconcepts.roadlink2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.flawlessconcepts.roadlink.roadlink.RetrofitService
@@ -22,6 +24,9 @@ class ConfirmActivity : AppCompatActivity() {
         val booking = intent.getParcelableExtra<BookingItem>("BOOKING")
         val client = ServiceGenerator.createService(RetrofitService::class.java)
 
+        if (booking != null){
+            setUpViewWithData(booking)
+        }
         val confirmButton = findViewById<MaterialButton>(R.id.confirm)
         confirmButton.setOnClickListener(){
 
@@ -40,6 +45,27 @@ class ConfirmActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
+    fun setUpViewWithData(booking: BookingItem){
+
+        val customerID = findViewById<TextView>(R.id.customerID)
+        val TripDistance = findViewById<TextView>(R.id.tripDistance)
+        val cost = findViewById<TextView>(R.id.calculatedCost)
+        val departureTime = findViewById<TextView>(R.id.departureTime)
+        val location = findViewById<TextView>(R.id.location)
+        val destination = findViewById<TextView>(R.id.destination)
+        val address = findViewById<TextView>(R.id.address)
+
+        customerID.text= booking.customerID
+        TripDistance.text= booking.tripDistance.toString() + " KM"
+        cost.text = "# "+ booking.calculatedCost.toString()
+        departureTime.text = booking.departureTime
+        location.text = booking.location
+        destination.text = booking.destination
+        address.text = booking.locationAddress
+
+    }
+
 
     
     fun addBookingToDatabase(client:RetrofitService, bk:BookingItem){
@@ -55,6 +81,15 @@ class ConfirmActivity : AppCompatActivity() {
                 val statusCode = response.code()
                 Toast.makeText(applicationContext, response.code().toString() +
                         "/n"+response.body().toString() , Toast.LENGTH_LONG).show()
+                try {
+                    val booking = response.body() as BookingItem
+                   confirmBookingClicked(booking)
+
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        applicationContext, e.toString(), Toast.LENGTH_LONG
+                    ).show()
+                }
 
 
 
@@ -69,11 +104,12 @@ class ConfirmActivity : AppCompatActivity() {
 
 
 
-    fun confirmBookingClicked() {
+    fun confirmBookingClicked(booking: BookingItem) {
         val viewALlBooking =
             Intent(this@ConfirmActivity, ViewAllBookingActivity::class.java)
-
+        viewALlBooking.putExtra("BOOKING",booking)
         startActivity(viewALlBooking)
+        finish()
     }
 
     fun cancelBookingClicked(){

@@ -30,6 +30,11 @@ class MakeBookingActivity : AppCompatActivity() {
     lateinit var progressBarLayOut: LinearLayout
     lateinit var makebookingButton: MaterialButton
 
+    var locationMatrixOne= LocationMatrix()
+    var locationMatrixTwo= LocationMatrix()
+
+
+
 
     var radioGroupTime: RadioGroup? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -153,13 +158,14 @@ class MakeBookingActivity : AppCompatActivity() {
         if (!tvTime.text.isEmpty()) {
             departureTime = tvTime.text.toString() + " " + selectButton.text.toString()
         }
+        val address: TextView = findViewById(R.id.locationAddress)
+        locationAddress = address.text.toString()
         // radioGroupTime = findViewById(intSelectButton)
     }
 
 
 
     fun getDistanceMatrix(customer: CustomerItem, client: RetrofitService) {
-
 
 
         if (numPassengers.toString().toInt() > 12 || numPassengers.toString().toInt() < 1) {
@@ -173,42 +179,7 @@ class MakeBookingActivity : AppCompatActivity() {
         } else {
             if (location != null && destination != null && departureTime != null && numPassengers != null) {
 
-
-                val LmatrixCall = client.getDistanceMatrix(location, destination)
-                LmatrixCall.enqueue(object : Callback<LocationMatrix?> {
-                    override fun onResponse(
-                        call: Call<LocationMatrix?>, response: Response<LocationMatrix?>
-                    ) {
-                        val statusCode = response.code()
-
-                        Toast.makeText(
-                            applicationContext, response.code().toString() +
-                                    "/n" + response.body().toString() +"      " +hasReturn, Toast.LENGTH_LONG
-                        ).show()
-                        try {
-                            val distaceMatrix = response.body() as LocationMatrix
-                            makeABooking(customer, distaceMatrix)
-
-
-                        } catch (e: Exception) {
-                            progressBarLayOut.visibility = View.INVISIBLE
-                            makebookingButton.isEnabled = true
-                            Toast.makeText(
-                                applicationContext, e.toString(), Toast.LENGTH_LONG
-                            ).show()
-                        }
-
-                    }
-
-                    override fun onFailure(call: Call<LocationMatrix?>, t: Throwable) {
-                        // Log error here since request failed
-                        progressBarLayOut.visibility = View.INVISIBLE
-                        makebookingButton.isEnabled = true
-                        Toast.makeText(applicationContext, "failed" + t.message, Toast.LENGTH_LONG)
-                            .show()
-                    }
-                })
-
+                NetWorkCalls(client, customer)
 
             } else {
                 progressBarLayOut.visibility = View.INVISIBLE
@@ -225,96 +196,46 @@ class MakeBookingActivity : AppCompatActivity() {
     }
 
 
-    fun makeABooking(customer: CustomerItem, locationMatrix: LocationMatrix) {
-        val tvNumPass = findViewById<TextView>(R.id.numPassenger)
-        numPassengers = tvNumPass.text.toString()
-        val locAddress = findViewById<TextView>(R.id.locationAddress)
-        locationAddress = locAddress.text.toString()
+    fun NetWorkCalls(client: RetrofitService,customer: CustomerItem){
 
-        val bookingItem = BookingItem()
-        var bk = bookingItem.copy(
-            location = location!!,
-            destination = destination!!,
-            isHasReturn = hasReturn,
-            calculatedCost = getCalculatedCost(locationMatrix),
-            customerID = customer.customerPhone,
-            departureTime = departureTime!!,
-            locationAddress = locationAddress!!,
-            numbOfPassengers = numPassengers!!.toInt(),
-            tripDistance =getTripDistance(locationMatrix)
-        )
+        val costCall = client.calculateCostService(location,destination, hasReturn,
+            departureTime,locationAddress,customer.customerPhone,numPassengers)
+        costCall.enqueue(object : Callback<BookingItem?> {
+            override fun onResponse(
+                call: Call<BookingItem?>, response: Response<BookingItem?>
+            ) {
+                val statusCode = response.code()
+                try {
+                    val booking = response.body() as BookingItem
+                    val startMenu = Intent(applicationContext, ConfirmActivity::class.java)
+                    startMenu.putExtra("BOOKING",booking)
+                    startActivity(startMenu)
+                    finish()
 
-        Toast.makeText(applicationContext, "successs" + bk.calculatedCost + bk.departureTime+ " " + bk.tripDistance, Toast.LENGTH_LONG)
-            .show()
+                    } catch (e: Exception) {
+                        progressBarLayOut.visibility = View.INVISIBLE
+                        makebookingButton.isEnabled = true
+                        Toast.makeText(
+                            applicationContext, e.toString(), Toast.LENGTH_LONG
+                        ).show()
+                    }
 
-        progressBarLayOut.visibility = View.INVISIBLE
 
-        val makeBooking = Intent(this@MakeBookingActivity, ConfirmActivity::class.java)
-        makeBooking.putExtra("BOOKING",bk)
-        startActivity(makeBooking)
+            }
+
+            override fun onFailure(call: Call<BookingItem?>, t: Throwable) {
+                // Log error here since request failed
+                progressBarLayOut.visibility = View.INVISIBLE
+                makebookingButton.isEnabled = true
+                Toast.makeText(applicationContext, "failed" + t.message, Toast.LENGTH_LONG)
+                    .show()
+            }
+        })
     }
 
 
-    fun getTripDistance(locationMatrix: LocationMatrix): Double {
-        var distance: Double = 0.0
-        if (locationMatrix.toLocation.equals("Enugu-North", true)) {
-            if (hasReturn.equals("True", true)) {
-                return 30.0
-            } else {
-                return 20.0
-            }
-        } else {
-            distance += 9
-            if (hasReturn.equals("true", true)) {
-                distance += locationMatrix.distance.toDouble() * 2.0
-                return distance
-            } else {
-                distance += locationMatrix.distance.toString().toDouble()
-                return distance
-            }
-        }
+    override fun onBackPressed() {
+        super.onBackPressed()
+
     }
-
-
-    fun getCalculatedCost(locationMatrix: LocationMatrix): Double {
-        var totalTime: Double =0.0
-        var cost: Double =0.0
-
-        if (locationMatrix.toLocation.equals("Enugu-North", true)) {
-            if (hasReturn.equals("true", true)) {
-                totalTime = 40.0
-                cost += 12.5 * totalTime * capacity(numPassengers!!.toString().toInt())
-                return cost
-            } else {
-                totalTime = 25.0
-
-                cost+= 15.0 * totalTime *capacity(numPassengers!!.toString().toInt())
-                return cost
-
-            }
-        } else {
-            totalTime += 11
-            if (hasReturn.equals("true", true)) {
-                totalTime += locationMatrix.time.toDouble() * 2
-                cost+= 12.5 * totalTime * capacity(numPassengers!!.toString().toInt())
-                return cost
-            } else {
-                totalTime += locationMatrix.time.toDouble()
-                cost += 12.5 * totalTime * capacity(numPassengers!!.toString().toInt())
-                return  cost
-            }
-        }
-    }
-
-
-    fun capacity(numberPassengers: Int): Double {
-        when (numberPassengers) {
-            in 1..3 -> return 3.0
-            in 4..7 -> return 7.0
-            in 8..12 -> return 12.0
-            else -> return 0.0
-        }
-    }
-
-
 }
