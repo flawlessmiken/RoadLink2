@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RoadLink2</string>
+    <string name="app_name">RoadLink</string>
 
 
     <string-array name="has_return">

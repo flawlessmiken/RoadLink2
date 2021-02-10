@@ -24,8 +24,6 @@ class ViewAllBookingActivity : AppCompatActivity() {
     }
 
     fun doneBookingClicked(view: View?) {
-        val goHome = Intent(this@ViewAllBookingActivity, MainActivity::class.java)
-        startActivity(goHome)
         finish()
     }
 
@@ -49,13 +47,22 @@ class ViewAllBookingActivity : AppCompatActivity() {
         val numPassenger = findViewById<TextView>(R.id.numPassenger)
         val location = findViewById<TextView>(R.id.location)
         val destination = findViewById<TextView>(R.id.destination)
-        val address = findViewById<TextView>(R.id.address)
+        val address = findViewById<TextView>(R.id.locationAddress)
 
-        customerID.text= booking.customerID
-        TripDistance.text= booking.tripDistance.toString() + " KM"
-        cost.text = "# "+ booking.calculatedCost.toString()
+        bookingID.text= booking.bookingID.toString()
+        tripDistance.text= booking.tripDistance.toString() + " KM"
+        calculatedCost.text = "# "+ booking.calculatedCost.toString()
         departureTime.text = booking.departureTime
+        vehicleID.text = booking.departureTime
+        customerID.text = booking.customerID
         location.text = booking.location
+        HasReturn.text = booking.isHasReturn
+        bookingStatus.text = booking.bookingStatus
+        paymentStatus.text = booking.paymentStatus
+        paidAmount.text = booking.paidAmount.toString()
+        bookingDate.text = booking.bookingDate
+        arrivalTime.text = booking.arrivalTime
+        numPassenger.text = booking.numbOfPassengers.toString()
         destination.text = booking.destination
         address.text = booking.locationAddress
 

@@ -14,7 +14,7 @@ interface RetrofitService {
     fun getCustomer(@Query("phone") phone: String): Call<CustomerItem>
 
     @GET("/webresources/rest/viewBookingService")
-    fun getBooking(@Query("bookingID") bookingID: Long): Call<BookingItem>
+    fun getBooking(@Query("bookingID") bookingID: String): Call<BookingItem>
 
 
     @PUT("/webresources/rest/removeBookingService")
@@ -51,6 +51,12 @@ interface RetrofitService {
 
     ): Call<BookingItem>
 
+    @PUT("/webresources/rest/addCustomerService")
+    fun registerCustomer(
+        @Query("firstName") firstName: String?,
+        @Query("lastName") lastName: String?,
+        @Query("phone") phone: String?
+    ): Call<CustomerItem>
 
 
 //    interface TaskService {

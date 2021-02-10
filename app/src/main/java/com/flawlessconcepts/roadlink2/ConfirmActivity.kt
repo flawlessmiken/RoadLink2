@@ -38,7 +38,7 @@ class ConfirmActivity : AppCompatActivity() {
 
         val cancelButton = findViewById<MaterialButton>(R.id.cancel)
         cancelButton.setOnClickListener(){
-
+            cancelBookingClicked()
         }
 
 
@@ -79,8 +79,7 @@ class ConfirmActivity : AppCompatActivity() {
                 response: Response<BookingItem?>
             ) {
                 val statusCode = response.code()
-                Toast.makeText(applicationContext, response.code().toString() +
-                        "/n"+response.body().toString() , Toast.LENGTH_LONG).show()
+
                 try {
                     val booking = response.body() as BookingItem
                    confirmBookingClicked(booking)
@@ -114,5 +113,11 @@ class ConfirmActivity : AppCompatActivity() {
 
     fun cancelBookingClicked(){
         Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

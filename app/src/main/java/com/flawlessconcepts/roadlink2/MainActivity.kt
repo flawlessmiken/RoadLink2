@@ -66,7 +66,6 @@ class MainActivity : AppCompatActivity() {
             ) {
                 progressBar.visibility = View.INVISIBLE
                 val statusCode = response.code()
-                Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_LONG).show()
                 try {
                     val customer = response.body() as CustomerItem
                    // Toast.makeText(applicationContext, customer.customerFirstName, Toast.LENGTH_LONG).show()

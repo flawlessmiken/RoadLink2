@@ -14,10 +14,6 @@ class MenuActivity : AppCompatActivity() {
 
         val customer = intent.getParcelableExtra<CustomerItem>("CUSTOMER")
 
-
-        Toast.makeText(applicationContext, customer?.customerPhone, Toast.LENGTH_LONG).show()
-
-
         val viewBookingButton = findViewById<MaterialButton>(R.id.bt_view_booking)
         viewBookingButton.setOnClickListener {
             if(customer != null)viewBookingClicked(customer) }
@@ -28,7 +24,6 @@ class MenuActivity : AppCompatActivity() {
 
     private fun viewBookingClicked(customer: CustomerItem) {
         val startViewBooking = Intent(this@MenuActivity, ViewBookingActivity::class.java)
-        startViewBooking.putExtra("CUSTOMER",customer)
         startActivity(startViewBooking)
     }
 

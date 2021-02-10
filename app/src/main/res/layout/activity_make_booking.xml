@@ -51,12 +51,17 @@
             <TextView
                 android:id="@+id/tv_customer_id"
                 style="@style/CustomTextView"
-                android:text="Customer ID" />
+                android:text="Customer Name"
+                android:gravity="center"
+                />
 
             <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:id="@+id/customerID"
-                style="@style/CustomEditText"
-                android:hint="Customer ID"
+                style="@style/CustomEditText3"
+                android:gravity="center"
+
+
                  />
 
             <TextView
@@ -176,7 +181,7 @@
             <EditText
                 android:id="@+id/numPassenger"
                 style="@style/CustomEditText"
-                android:hint="Number of Passenger"
+                android:hint="1"
                 android:maxLength="2"
                 android:inputType="number" />
 

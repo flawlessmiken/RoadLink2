@@ -1,5 +1,6 @@
 package com.flawlessconcepts.roadlink2
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -24,19 +25,17 @@ class MakeBookingActivity : AppCompatActivity() {
     private var destination: String? = null
     private var location: String? = null
     private var departureTime: String? = null
-    private var numPassengers: String? = null
+    private var numPassengers: String? = "1"
     private var locationAddress: String? = ""
 
     lateinit var progressBarLayOut: LinearLayout
     lateinit var makebookingButton: MaterialButton
 
-    var locationMatrixOne= LocationMatrix()
-    var locationMatrixTwo= LocationMatrix()
-
 
 
 
     var radioGroupTime: RadioGroup? = null
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_make_booking)
@@ -52,15 +51,17 @@ class MakeBookingActivity : AppCompatActivity() {
 
 
         makebookingButton = findViewById<MaterialButton>(R.id.bt_book_now)
-        makebookingButton.setOnClickListener {
+        val customerID = findViewById<TextView>(R.id.customerID)
+        customerID.text = customer?.customerFirstName + " " + customer?.customerLastName
 
+        makebookingButton.setOnClickListener {
             val numPassengerstex: TextView = findViewById(R.id.numPassenger)
+            if (!numPassengerstex.text.isEmpty())
             numPassengers =numPassengerstex.text.toString()
 
             setUptime()
             if (customer != null) {
-
-                if( numPassengers !=null){
+                if( numPassengers !=null && numPassengers != ""){
                     makebookingButton.isEnabled = false
                     progressBarLayOut.visibility = View.VISIBLE
 
@@ -168,29 +169,32 @@ class MakeBookingActivity : AppCompatActivity() {
     fun getDistanceMatrix(customer: CustomerItem, client: RetrofitService) {
 
 
-        if (numPassengers.toString().toInt() > 12 || numPassengers.toString().toInt() < 1) {
-            progressBarLayOut.visibility = View.INVISIBLE
-            makebookingButton.isEnabled = true
-            Toast.makeText(
-                applicationContext,
-                "Number of Passengers can only be between 1 and 12",
-                Toast.LENGTH_LONG
-            ).show()
-        } else {
-            if (location != null && destination != null && departureTime != null && numPassengers != null) {
-
-                NetWorkCalls(client, customer)
-
-            } else {
+        try {
+            if (numPassengers.toString().toInt() > 12 || numPassengers.toString().toInt() < 1) {
                 progressBarLayOut.visibility = View.INVISIBLE
                 makebookingButton.isEnabled = true
                 Toast.makeText(
                     applicationContext,
-                    "failed: " + "Please Ensure You Enter every Value correctly", Toast.LENGTH_LONG
+                    "Number of Passengers can only be between 1 and 12",
+                    Toast.LENGTH_LONG
                 ).show()
+            } else {
+                if (location != null && destination != null && departureTime != null && numPassengers != null) {
 
+                    NetWorkCalls(client, customer)
+
+                } else {
+                    progressBarLayOut.visibility = View.INVISIBLE
+                    makebookingButton.isEnabled = true
+                    Toast.makeText(
+                        applicationContext,
+                        "failed: " + "Please Ensure You Enter every Value correctly", Toast.LENGTH_LONG
+                    ).show()
+
+                }
             }
-        }
+        }catch (e:Exception){}
+
 
 
     }
